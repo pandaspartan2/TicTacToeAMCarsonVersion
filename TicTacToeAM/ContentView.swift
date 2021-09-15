@@ -23,7 +23,7 @@ struct Home: View {
     // Number of moves we can make
     @State var moves: [String] = Array(repeating: "", count: 9)
     // To identify our current player
-    @State var isPlaying = false
+    @State var isPlaying = true
     
     var body: some View {
         VStack {
@@ -34,12 +34,16 @@ struct Home: View {
                     index in
                     
                     ZStack {
+                        
+                        Color.blue
+                        
                         Color.white
+                            .opacity(moves[index] == "" ? 1 : 0)
                         
                         Text(moves[index])
                             .font(.system(size: 55))
                             .fontWeight(.heavy)
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                     }
                         .frame(width: getWidth(), height: getWidth())
                         .cornerRadius(15)
@@ -47,9 +51,10 @@ struct Home: View {
                     .onTapGesture(perform: {
                         withAnimation(Animation.easeIn(duration: 0.5)) {
                             
-                            moves[index] = isPlaying ? "X" : "O"
-                            isPlaying.toggle()
-                            
+                            if moves [index] == "" {
+                                moves[index] = isPlaying ? "X" : "O"
+                                isPlaying.toggle()
+                            }
                         }
                     })
                 }
