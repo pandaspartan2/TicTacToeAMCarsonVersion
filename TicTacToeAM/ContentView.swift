@@ -28,11 +28,22 @@ struct Home: View {
                     index in
                     
                     Color.white
+                        .frame(width: getWidth(), height: getWidth())
+                        .cornerRadius(15)
                 }
                 
             }
             
+            .padding(15)
+            
         }
+    }
+    
+    // Calculate width of grid
+    func getWidth() -> CGFloat {
+        let width = UIScreen.main.bounds.width - (30 + 30)
+        
+        return width / 3
     }
 }
 
