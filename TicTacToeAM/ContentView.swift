@@ -78,6 +78,17 @@ struct Home: View {
             
             checkWinner()
         })
+        .alert(isPresented: $gameOver, content: {
+            
+            Alert(title: Text("Winner"), message: Text(msg), dismissButton: .destructive(Text("Play Again"), action: {
+                // Resets all data
+                withAnimation(Animation.easeIn(duration: 0.5)) {
+                    moves.removeAll()
+                    moves = Array(repeating: "", count: 9)
+                    isPlaying = true
+                }
+            }))
+        })
     }
     
     // Calculate width of grid
