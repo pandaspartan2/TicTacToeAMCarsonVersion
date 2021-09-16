@@ -115,7 +115,7 @@ struct Home: View {
 }
 
     func checkMoves(player: String) -> Bool {
-    
+    //Horizontal moves
         for contestant in stride(from: 0, to: 9, by: 3) {
             if moves[contestant] == player &&
                 moves[contestant+1] == player &&
@@ -124,7 +124,7 @@ struct Home: View {
                 return true
         }
     }
-        
+        //vertical moves
         for contestant in 0...2 {
             if moves[contestant] == player &&
                 moves[contestant+3] == player &&
@@ -137,6 +137,14 @@ struct Home: View {
     }
 }
 
+//diagonal
+if moves[0] == player && moves [4] == player && moves [8] == player {
+    
+    return true
+}
+if moves [2] == player && moves [4] == player && moves [6] == player {
+    return false
+}
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
