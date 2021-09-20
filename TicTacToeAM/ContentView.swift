@@ -111,6 +111,18 @@ struct Home: View {
             
             msg = "Player O Won!!!"
             gameOver.toggle()
+            
+        } else {
+            let status = moves.contains { (value)-> Bool in
+                
+                return value == "cat"
+                
+            }
+        
+            if !status {
+                msg = "Game Over Tied!!"
+                gameOver.toggle()
+            }
         }
 }
 
@@ -133,9 +145,7 @@ struct Home: View {
                 return true
         }
     }
-    return false
-    }
-}
+   
 
 //diagonal
 if moves[0] == player && moves [4] == player && moves [8] == player {
@@ -143,7 +153,10 @@ if moves[0] == player && moves [4] == player && moves [8] == player {
     return true
 }
 if moves [2] == player && moves [4] == player && moves [6] == player {
-    return false
+    return true
+}
+return false
+}
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
